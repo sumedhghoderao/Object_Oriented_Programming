@@ -1,0 +1,246 @@
+#include<iostream>
+#include<string.h>
+#include<stdio.h>
+using namespace std;
+
+int num=0;
+
+class A
+{
+protected:
+char name[10];
+char dob[15];
+char bldgrp[5];
+};
+
+class B
+{
+protected:
+float height;
+float weight;
+};
+
+class C
+{
+protected:
+char insure_p_no[10];
+char address[10];	
+};
+
+class Person: public A, public B, public C
+{
+private:
+char tele_no[10];
+char drive_l_no[10];
+
+public:
+	void display();
+	friend void add(Person []);
+	friend int search(char [], Person []);
+	friend void del(Person []);
+	friend void modify(Person []);
+	friend void change(Person []);
+};
+
+void add(Person p[10])
+{	
+	int x;
+	char str[10];
+
+	cout<<"\nEnter the driving license no. of person you want to add:-\n";
+	cin>>str;
+	
+	x=search(str,p);
+	if(x==-1)
+	{
+		strcpy(p[num].drive_l_no,str);
+		
+		cout<<"\nEnter name:-\n";
+		cin>>p[num].name;
+	
+		cout<<"\nEnter date of birth:-\n";
+		cin>>p[num].dob;
+	
+		cout<<"\nEnter blood group:-\n";
+		cin>>p[num].bldgrp;
+	
+		cout<<"\nEnter height:-\n";
+		cin>>p[num].height;
+	
+		cout<<"\nEnter weight:-\n";
+		cin>>p[num].weight;
+	
+		cout<<"\nEnter insurance policy no.:-\n";
+		cin>>p[num].insure_p_no;
+	
+		cout<<"\nEnter address:-\n";
+		cin>>p[num].address;
+	
+		cout<<"\nEnter telephone no.:-\n";
+		cin>>p[num].tele_no;
+		
+		num++;
+	}
+	else
+	{
+		cout<<"\nRecord Already Exist!\n";
+	}
+}
+
+void Person :: display()
+{	
+	cout<<"\n\nName:-"<<name;
+	
+	cout<<"\nEnter date of birth:-"<<dob;
+	
+	cout<<"\nEnter blood group:-"<<bldgrp;
+	
+	cout<<"\nEnter height:-"<<height;
+	
+	cout<<"\nEnter weight:-"<<weight;
+	
+	cout<<"\nEnter insurance policy no.:-"<<insure_p_no;
+		
+	cout<<"\nEnter address:-"<<address;
+	
+	cout<<"\nEnter telephone no.:-"<<tele_no;
+	
+	cout<<"\nEnter driving license no.:-"<<drive_l_no<<"\n\n";
+}
+
+int search(char d_l_no[10], Person p[10])
+{	
+	int i;
+
+	for(i=0;i<num;i++)
+	{
+		if(!strcmp(d_l_no,p[i].drive_l_no))
+		{
+			return i;
+		}
+	}
+		return -1;
+}
+
+void del(Person p[10])
+{
+	int x,i;
+	char str[10];
+	
+	cout<<"\nEnter the driving license no. of person you want to delete:-\n";
+	cin>>str;
+	
+	x=search(str,p);
+	if(x==-1)
+	{
+		cout<<"\nRecord Not Found!\n";
+	}
+	else
+	{
+		for(i=x;i<num-1;i++)
+		{
+			p[i]=p[i+1];
+		}
+		cout<<"\nRecord deleted!\n";
+		num--;
+	}	
+}
+
+void modify(Person p[10])
+{
+	int x;
+	char str[10];
+	
+	cout<<"\nEnter the driving license no. of person you want to modify:-\n";
+	cin>>str;
+	
+	x=search(str,p);
+	if(x==-1)
+	{
+		cout<<"\nRecord Not Found!\n";
+	}
+	else
+	{
+		cout<<"\nEnter name:-\n";
+		cin>>p[x].name;
+	
+		cout<<"\nEnter date of birth:-\n";
+		cin>>p[x].dob;
+	
+		cout<<"\nEnter blood group:-\n";
+		cin>>p[x].bldgrp;
+	
+		cout<<"\nEnter height:-\n";
+		cin>>p[x].height;
+	
+		cout<<"\nEnter weight:-\n";
+		cin>>p[x].weight;
+	
+		cout<<"\nEnter insurance policy no.:-\n";
+		cin>>p[x].insure_p_no;
+	
+		cout<<"\nEnter address:-\n";
+		cin>>p[x].address;
+	
+		cout<<"\nEnter telephone no.:-\n";
+		cin>>p[x].tele_no;
+	}	
+}
+
+int main()
+{
+	int x,y=1,ch,i,no;
+	char str[10];
+	
+	Person p[50];
+	
+	cout<<"\nHow many records you wan to enter?\n";
+	cin>>no;
+	
+	for(i=0;i<no;i++)
+	{
+		add(p);
+		i=num-1;
+	}
+	
+	while(y)
+	{
+		printf("\nWhat u want to do:-\n1-Add \n2-Delete \n3-Display \n4-Modify \n5-Search \n6-Exit\n");
+		scanf("%d", &ch);
+	
+		switch(ch)
+		{
+			case 1:	add(p);
+					break;
+			case 2:	del(p);
+					break;
+			case 3:	for(i=0;i<num;i++)
+					{
+						p[i].display();
+					}
+					break;
+			case 4:	modify(p);
+					break;
+			case 5:	cout<<"\nEnter the driving license no. of person you are searching for:-\n";
+					cin>>str;
+	
+					x=search(str,p);
+					if(x==-1)
+					{
+						cout<<"\nRecord Not Found!\n";
+					}
+					else
+					{
+						p[x].display();
+					}
+					break;
+			case 6:	y=0;
+					break;
+			default:cout<<"Please enter correct choice!";	
+					break;
+		}
+	}
+	
+	return 0;
+}
+
