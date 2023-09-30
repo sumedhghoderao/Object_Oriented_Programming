@@ -1,0 +1,56 @@
+#include<iostream>
+using namespace std;
+class shape
+{
+public:
+	double b,h;
+	virtual void compute_area()
+	{
+	}
+	void accept()
+{
+	cout<<"\n"<<"enter base and height"<<"\n";
+	cin>>b>>h;
+}}*s;
+	
+
+class triangle:public shape
+{
+	public:
+void compute_area()
+	{
+	
+	cout<<"area of triangle ="<<0.5*b*h;;
+}}t;
+class rectangle:public shape
+{
+public:
+	void compute_area()
+	{
+	
+cout<<"area of rectangle ="<<b*h;	
+}}r;
+
+int main()
+{
+int ch;
+	
+do
+{cout<<"\n"<<"enter 1 for the computing the area of triangle"<<"\n"<<"ENTER 2 FOR COMPUTING THE AREA OF RECTANGLE"<<"\n";
+cin>>ch;
+switch(ch)
+{
+case 1:
+   s=&t;
+   s->accept();
+   s->compute_area();
+	break;
+case 2:
+s=&r;
+	s->accept();
+	s->compute_area();
+	break;
+default:cout<<"enter a valid no."<<"\n"	;
+}}
+while(ch!=3);
+}
