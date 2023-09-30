@@ -1,0 +1,111 @@
+#include<iostream>
+using namespace std;
+class complexno
+{
+public:
+int i,r;
+
+
+void accept()
+{
+cout<<"\nenter the real part of the complex no.\n";
+cin>>r;
+cout<<"\nenter the imaginary part the complex no.\n";
+cin>>i;
+}
+
+void display()
+{
+cout<<"\nthe result is:\n";
+cout<<r<<"+"<<i<<"i";
+}
+complexno()
+{
+r=0;
+i=0;
+}
+
+complexno(float x,float y)
+{
+r=x;
+i=y;
+}
+
+complexno operator +(complexno );
+complexno operator -(complexno);
+friend complexno  operator *(complexno r,complexno i);
+friend complexno  operator /(complexno r,complexno i);
+}c1,c2,c3;
+
+complexno complexno::operator +(complexno )
+{
+c3.r=c1.r+c2.r;
+c3.i=c1.i+c2.i;
+return c3;
+}
+
+complexno complexno::operator -(complexno )
+{
+c3.r=c1.r-c2.r;
+c3.i=c1.i-c2.i;
+return c3;
+}
+
+complexno operator*(complexno x,complexno y)
+{
+c3.r=(x.r*y.r)-(x.i*y.i);
+c3.i=(x.r*y.i)+(x.i*y.r);
+return c3;
+}
+
+complexno operator/(complexno x,complexno y)
+{
+c3.r=((x.r*y.r)-(x.i*y.i))/(y.r*y.r)+(y.i*y.i);
+c3.i=((x.r*y.i)+(x.i*y.r))/(y.r*y.r)+(y.i*y.i);
+return c3;
+}
+int main()
+{
+int ch;
+do{
+cout<<"\n1.ACCEPT\n2.DISPLAY\n3.ADDITION\n4.SUBTRACTION\n.5.MULTIPLICATION\n.6.DIVISION\n7.\nENTER YOUR CHOICE";
+
+
+
+cin>>ch;
+switch(ch)
+{
+case 1: c1.accept();
+			c2.accept();
+			break;
+			
+case 2:c1.display();
+ 			c2.display();			
+			break;
+			
+case 3:	
+             c3=c1+c2;
+               c3.display();
+               break;
+               
+  case 4:	
+             c3=c1-c2;
+               c3.display();
+               break;
+  
+   case 5:	
+             c3=c1*c2;
+               c3.display();
+               break;                          
+     
+     case 6:	
+             c3=c1/c2;
+               c3.display();
+               break;                          
+               
+}
+}
+while(ch!=7);
+
+}
+
