@@ -1,0 +1,203 @@
+#include<iostream>
+#include<string.h>
+using namespace std;
+int count2;
+class book
+{
+ public:
+ int qa,i,j,k,m,h,pr,p;
+ int count=0;
+ int count1=0;
+ char au[20],pu[20],tt[20],g[20];
+
+ public:
+ void add();
+ void display();
+ void update();
+ void tran();
+ void search(book[]);
+
+ book()
+ {
+  
+ }
+};
+ 
+int main()
+ {
+  book a[100];
+  int sw;
+  int f1=0;
+  int f2=0;
+  for(int i=0;i<2;i++)
+  {
+   cout<<"Enter tital of the book\n";
+   cin>>a[i].tt;
+  
+   cout<<"Enter auther of the book\n";
+   cin>>a[i].au;
+  
+   cout<<"Enter publisher of the book\n";
+   cin>>a[i].pu;
+  
+   cout<<"Enter price of the book\n";
+   cin>>a[i].pr;
+  
+   cout<<"Enter stock of the book\n";
+   cin>>a[i].qa;
+
+   cout<<"\n\n";
+   f2++;
+  }
+
+
+while(1)
+{
+ cout<<"\n1.Display the data\n2.update/purchase a book\n3.search a book\n4.Add a book\n5.cheak transaction\n";
+ cin>>sw;
+
+switch(sw)
+{
+ 
+ case 1:for(int i=0;i<2;i++)
+        {
+         a[i].display();
+        }
+        break;
+
+ case 2:char name[20];
+        int i;
+        cout<<"Enter name:";
+        cin>>name;
+        for(i=0;i<2;i++)
+        {
+         if(!strcmp(a[i].tt,name))
+         {
+          a[i].update();
+          break;
+         }
+        }
+        break;
+
+ case 3:a[0].search(a);
+        break;
+
+ case 4:a[f2].add();
+        f2++;
+        break;
+
+ case 5:for(int i=0;i<2;i++)
+        {
+         a[i].tran();
+         break;
+        }
+        break;
+
+ default:cout<<"Enter valid choice";
+}
+}
+return 0;
+
+}
+
+
+void book::display()
+{
+ cout<<"\ntitle is"<<tt;
+ cout<<"\nauther is"<<au;
+ cout<<"\npublisher is"<<pu;
+ cout<<"\nprices is"<<pr;
+ cout<<"\nstock is"<<qa;
+ cout<<"\n\n";
+}
+
+void book::update()
+{
+ int k=1;
+ cout<<"Enter update price";
+ cin>>h;
+ pr=h;
+
+ cout<<"\ntitle is"<<tt;
+ cout<<"\nauther is"<<au;
+ cout<<"\npublisher is"<<pu;
+ cout<<"\nprices is"<<h;
+ cout<<"\nstock is"<<qa;
+ cout<<"\n\n";
+
+ cout<<"\nwould like to buy a book press 1(yes) or 0(no)\n";
+ cin>>p;
+ 
+ cout<<"\nThank you for purchase a book\n";
+
+ if(p==k)
+ ++count;
+ else
+ ++count;
+}
+
+void book::add()
+{
+ char *p[20],*q[20],*r[20];
+ int *s,*t;
+
+ p[20]=new char;
+ q[20]=new char;
+ r[20]=new char;
+ s=new int;
+ t=new int;
+
+ cout<<"Enter the information of book you want to add\n";
+   cout<<"Enter tital of the book\n";
+   cin>>*p;
+  
+   cout<<"Enter auther of the book\n";
+   cin>>*q;
+  
+   cout<<"Enter publisher of the book\n";
+   cin>>*r;
+  
+   cout<<"Enter price of the book\n";
+   cin>>*s;
+  
+   cout<<"Enter stock of the book\n";
+   cin>>*t;
+   cout<<"\n\n";
+
+   cout<<"\nThe added information of the book is";
+   cout<<"\ntitle is"<<*p;
+   cout<<"\nauther is"<<*q;
+   cout<<"\npublisher is"<<*r;
+   cout<<"\nprices is"<<*s;
+   cout<<"\nstock is"<<*t;
+   cout<<"\n\n";
+}
+
+void book::search(book b[])
+{
+ cout<<"Enter the name of the boom that you want to search\n";
+ cin>>g;
+ int f1=0;
+ for(int i=0;i<2;i++)
+ {
+  if(!strcmp(g,b[i].tt))
+  {
+   cout<<"The is fund in the list\n";
+   f1=1;
+   break;
+  }
+ }
+ if(f1!=1)
+ {
+  cout<<"book not found\n";
+ }
+}
+
+void book::tran()
+{
+ cout<<"\nSuccessful or unsuccessful transition\n";
+ cout<<"\nSuccessful transition\n"<<count;
+ cout<<"\nunsuccessful transition\n"<<count1;
+ cout<<"\n";
+}
+ 
