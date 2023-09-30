@@ -1,0 +1,76 @@
+#include<iostream>
+using namespace std;
+class weather 
+{ public:
+  int day[10];
+  float htmp[10],ltmp[10],amtra[10],amtsn[10];
+  void accept(); 
+  void display();
+  weather()  //CONSTRUCTOR
+  {
+   
+  }
+}A;
+ 
+int i;
+void weather::accept() 
+{ 
+ for(i=0;i<5;i++)
+  {
+   cout<<"Enter Days\n";
+   cin>>A.day[i];
+
+   
+   cout<<"Enter High temprature\n";
+   cin>>A.htmp[i];
+
+   
+   cout<<"Enter low temprature\n";
+   cin>>A.ltmp[i];
+
+   
+   cout<<"Enter amount of rain\n";
+   cin>>A.amtra[i];
+
+   
+   cout<<"Enter amount of snow\n";
+   cin>>A.amtsn[i];
+  }
+}
+ 
+void weather::display()
+ { cout<<"Day of month"<<"\t"<<"High temp"<<"\t"<<"Low temp"<<"\t"<<"Amount of rain"<<"\t"<<"Amount of snow"<<"\n";
+  
+  for(i=0;i<5;i++)
+   { 
+cout<<A.day[i]<<"\t\t"<<A.htmp[i]<<"\t\t"<<A.ltmp[i]<<"\t\t"<<A.amtra[i]<<"\t\t"<<A.amtsn[i]<<"\n";
+                                 }
+int avght=0,avglt=0,avgra=0,avgsn=0;
+ for(i=0;i<5;i++)
+  {
+   avght=avght+A.htmp[i];
+   avglt=avglt+A.ltmp[i];                     
+   avgra=avgra+A.amtra[i];
+   avgsn=avgsn+A.amtsn[i];
+                                  }
+ cout<<"\nAverage"<<"\t\t"<<avght/5<<"\t\t"<<avglt/5<<"\t\t"<<avgra/5<<"\t\t"<<avgsn/5<<"\n";
+  }
+  int main() 
+ { 
+  int ch;
+  do
+   { cout<<"\n"<<"Enter 1 to accept data"<<"\n"<<"Enter 2 to display data"<<"\n"<<"Enter 3 to exit";
+     cin>>ch;
+     switch(ch)
+     {
+       case 1:A.accept();
+       break;
+       case 2:A.display(); 
+       break;
+       case 3:exit(0);
+       break;
+       default : cout<<"Enter valid choice";
+     }
+  
+   }while(ch!=3);
+ }
