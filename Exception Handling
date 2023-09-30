@@ -1,0 +1,45 @@
+#include<iostream>
+using namespace std;
+
+class Math
+{
+  double n1,n2;
+ public:
+ Math(double a, double b)
+ {
+   n1 = a;
+   n2 = b;
+ }
+ 
+ void divide()
+{
+  double div;
+   try
+   {
+	if(n2 == 0)
+	{
+	  throw 0;
+	}
+	div = n1/n2;
+	cout<<"\nDivision ="<<div<<"\n\n";
+   }
+   catch(int e)
+    {
+	cout<<"\nArithmetic Excepion Occured ! Divide by Zero !\n\n";
+    }
+}
+};
+
+int main()
+{
+  double n1,n2;
+   cout<<"\nEnter Dividend:";
+   cin>>n1;
+   cout<<"\nEnter Diviser:";
+   cin>>n2;
+	
+    Math Math(n1,n2);
+    Math.divide();
+	return 0;
+}
+
